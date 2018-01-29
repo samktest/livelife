@@ -1,0 +1,8 @@
+{
+  "name": "livelife",
+  "app_id": "b653ebce",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
