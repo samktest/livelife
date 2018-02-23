@@ -15,8 +15,8 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: { email: string, password: string } = {
-    email: 'test@example.com',
-    password: 'test'
+    email: 'samktest895@gmail.com',
+    password: 'samktest895'
   };
 
   // Our translated text strings
@@ -32,9 +32,14 @@ export class LoginPage {
     })
   }
 
-  // Attempt to login in through our User service
+  //Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
+
+    //var data = JSON.stringify({"email": this.account.email,"password": this.account.password});
+    var data   = {"email": this.account.email,"password": this.account.password};
+    //var data   = JSON.stringify({"userdata":{"email_login": this.account.email,"password": this.account.password}});
+
+    this.user.login(data).subscribe((resp) => {
       this.navCtrl.push(MainPage);
     }, (err) => {
       this.navCtrl.push(MainPage);

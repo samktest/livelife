@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams,  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /**
@@ -6,7 +6,10 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://example.com/api/v1';
+  //url: string = 'https://example.com/api/v1';
+  url: string = 'https://quneat-dev.herokuapp.com';
+  //url: string = 'http://guru.stagingweb.xyz/api_v1';
+  //http://guru.stagingweb.xyz/api_v1
 
   constructor(public http: HttpClient) {
   }
@@ -30,7 +33,7 @@ export class Api {
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
-    return this.http.post(this.url + '/' + endpoint, body, reqOpts);
+    return this.http.post(endpoint, body, reqOpts);
   }
 
   put(endpoint: string, body: any, reqOpts?: any) {

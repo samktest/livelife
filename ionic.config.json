@@ -2,6 +2,12 @@
   "name": "livelife",
   "app_id": "b653ebce",
   "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://quneat-dev.herokuapp.com/"
+    }
+  ],
   "integrations": {
     "cordova": {}
   }

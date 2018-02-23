@@ -1,0 +1,22 @@
+<ion-header no-shadow>
+  <ion-navbar>
+    <ion-buttons end *ngIf="showSkip">
+      <button ion-button (click)="startApp()" color="primary">{{ 'BACK_BUTTON_TEXT' | translate}}</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)" >
+    <ion-slide *ngFor="let question of questions">
+      <h4>{{question.title}}</h4>
+      <ion-list radio-group [(ngModel)]="question.option_id" *ngFor="let option of question.options">
+      	<ion-item >
+	    	<ion-label>{{option.title}}</ion-label>
+	    	<ion-radio  value="{{option.value}}"></ion-radio>
+	  	</ion-item>
+      </ion-list>
+      <button outline (click)="slideNext(questions)">Next</button>
+    </ion-slide>    
+  </ion-slides> 
+</ion-content>
