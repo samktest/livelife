@@ -1,15 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
+import { IonicPage, MenuController, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
-
+import { LoginPage } from '../pages';
+import { SignupPage } from '../pages';
+import { Storage } from '@ionic/storage';
 export interface Question {
-  question_id:number,
-  title: string;
-  options: any;
-  image: string;
+  id:number,
+  name: string;
+  option_catalogues: any;
+  option_id: number;
 }
-
+export interface Answers {
+  question_id:number,
+  option_id: number;
+}
 @IonicPage()
 @Component({
   selector: 'page-entryquestions',
@@ -17,45 +22,21 @@ export interface Question {
 })
 export class EntryquestionsPage {
   
+  userdata: any;
   questions: Question[];
+  answers: Answers[];
   showSkip = true;
   dir: string = 'ltr';
 
   @ViewChild(Slides) slides: Slides;
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
-  	this.dir = platform.dir();
-    translate.get(["TUTORIAL_SLIDE1_TITLE",
-      "TUTORIAL_SLIDE1_DESCRIPTION",
-      "TUTORIAL_SLIDE2_TITLE",
-      "TUTORIAL_SLIDE2_DESCRIPTION",
-      "TUTORIAL_SLIDE3_TITLE",
-      "TUTORIAL_SLIDE3_DESCRIPTION",
-    ]).subscribe(
-      (values) => {
-        
-        this.questions = [
-          {
-            question_id:1,
-            title: values.TUTORIAL_SLIDE1_TITLE,
-            options: [{title:"Option 1",value:1},{title:"Option 2",value:2}],
-            image: 'assets/img/ica-slidebox-img-1.png',
-          },
-          {
-            question_id:2,
-            title: values.TUTORIAL_SLIDE2_TITLE,
-            options: [{title:"Question 1",value:1},{title:"Option 2",value:2}],
-            image: 'assets/img/ica-slidebox-img-2.png',
-          },
-          {
-            question_id:3,
-            title: values.TUTORIAL_SLIDE3_TITLE,
-            options: [{title:"Question 1",value:1},{title:"Option 2",value:2}],
-            image: 'assets/img/ica-slidebox-img-3.png',
-          }
-        ];
-
-      });
+  constructor(private storage: Storage, public navCtrl: NavController, private loadingCtrl: LoadingController, public navParams: NavParams, public menu: MenuController, translate: TranslateService, public platform: Platform) {
+    
+      if(this.navParams.data.length>0)
+      {
+        this.questions = this.navParams.data || [];
+      }
+      
   }
 
   startApp() {
@@ -66,12 +47,6 @@ export class EntryquestionsPage {
   }
 
   onSlideChangeStart(slider) {
-    
-    if(slider.isEnd())
-    {
-    console.log(this.questions);
-    }
-    
     //slider.lockSwipes(true);
     this.showSkip = !slider.isEnd();
   }
@@ -79,9 +54,23 @@ export class EntryquestionsPage {
   slideNext(){
     this.slides.slideNext();
   }
-
-  ionViewDidEnter() {
-    // the root left menu should be disabled on the tutorial page
+  //save answers to database when user signup
+  Saveanswers(){
+    
+    this.answers = this.questions.map( ques => {
+      return { question_id: ques.id, option_id: Number(ques.option_id) };
+    });
+  }
+  
+  //check view user valid or not
+  ionViewCanEnter() {
+    // Check user is loggedin or not
+    this.storage.get('userdata').then((data) => {
+    if(!data.auth_token)
+    {
+      this.navCtrl.push(LoginPage);  
+    }
+    });
     this.menu.enable(false);
   }
 

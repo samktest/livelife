@@ -1,0 +1,30 @@
+<!--
+  Generated template for the InterestsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>interests</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	
+	<ion-list>
+
+	  <ion-item  *ngFor="let Interest of Interestinfo">
+	    <ion-label>{{Interest.name}}</ion-label>
+	    <ion-checkbox [(ngModel)]="Interest.checked" (ionChange)="ShowSubmit(Interest)"></ion-checkbox>
+	    <img src="{{Interest.imedia_url}}">
+	  </ion-item>	  	
+
+	</ion-list>
+
+	  <button ion-button color="primary" *ngIf="showSubmit" outline (click)="SaveInterest(questions)">Submit</button>
+
+</ion-content>

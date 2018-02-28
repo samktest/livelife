@@ -1,12 +1,13 @@
 {
   "BACK_BUTTON_TEXT": "Back",
-
+  "LOADER_MSG": "Please wait...",
   "NAME": "Name",
   "EMAIL": "Email",
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "LOGIN": "Sign in",
   "SIGNUP": "Sign up",
+  "LOGOUT": "LogOut",
 
   "TAB1_TITLE": "Items",
   "TAB2_TITLE": "Search",
@@ -42,13 +43,27 @@
 
   "WELCOME_TITLE": "Welcome",
 
+  "PLEASE_WAIT":"Pleaqse wait...",
+  "LOGIN_LOADING":"Sign in",
+  "LOGIN_SUCCESS":"Successfully logged in",
   "LOGIN_TITLE": "Sign in",
   "LOGIN_ERROR": "Unable to sign in. Please check your account information and try again.",
   "LOGIN_BUTTON": "Sign in",
   "SIGNUP_TITLE": "Sign up",
+  "SIGNUP_SUCCESS": "Successfully signup with Qeneqt",
   "SIGNUP_ERROR": "Unable to create account. Please check your account information and try again.",
   "SIGNUP_BUTTON": "Sign up",
-
+  "FOROGOT_TITLE": "Forgot Password",
+  "FORGOT_ERROR": "Email address not found. Please check and try again.",
+  "FORGOT_SUCCESS": "Forgot Password Request Sent Successfully",
+  "SEND_MAIL_BUTTON":"Send Request",
+  
+  "RESET":"Reset Password",
+  "RESET_SUCCESS":"Password Reset Successfully, You Can Now Login With New Password",
+  "RESET_ERROR":"Unable To Reset Password",
+  "RESET_PASSWORD_BUTTON": "Reset Password",
+  "PASSWORD_TOKEN":"Password Token",
+  "TOKEN_ERROR":"Token Mismatched Please Rquest New One / Check Again",
   "LIST_MASTER_TITLE": "Items",
 
   "ITEM_CREATE_TITLE": "New Item",

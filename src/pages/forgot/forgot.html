@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'FOROGOT_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="RequestForgot()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>  
+        <ion-input clearInput type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>{{ 'SEND_MAIL_BUTTON' | translate }}</button> 
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

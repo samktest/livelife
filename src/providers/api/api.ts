@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams,  } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /**
@@ -15,6 +15,7 @@ export class Api {
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
+    
     if (!reqOpts) {
       reqOpts = {
         params: new HttpParams()
@@ -29,7 +30,7 @@ export class Api {
       }
     }
 
-    return this.http.get(this.url + '/' + endpoint, reqOpts);
+    return this.http.get(endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
