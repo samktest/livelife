@@ -3,10 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams, ToastController,Loading, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { User } from '../../providers/providers';
-import { MainPage } from '../pages';
-import { ForgotPage } from '../pages';
+// import { MainPage } from '../pages';
+// import { ForgotPage } from '../pages';
 import { EntryPage } from '../pages';
-
 
 @IonicPage()
 @Component({
@@ -49,7 +48,8 @@ export class LoginPage {
     // Check user is loggedin or not
     this.storage.get('userdata').then((data) => {
       if(data!==null){
-        this.navCtrl.push(MainPage);  
+        //this.navCtrl.push(MainPage);  
+        this.getEntryQuestions(data);
       }
     });
   }
@@ -71,7 +71,8 @@ export class LoginPage {
 
         this.user.login(data).subscribe((resp) => {
           this.loading.dismiss();
-          this.navCtrl.push(MainPage); 
+          //this.navCtrl.push(MainPage); 
+
         }, (err) => {
           // Unable to log in
           this.loading.dismiss();
@@ -89,7 +90,34 @@ export class LoginPage {
   }
   signup() {
     this.navCtrl.push('SignupPage');
+  } 
+
+  //Get signup questions list 
+  getEntryQuestions(reqdata) {
+    this.user.entryquestions(reqdata).subscribe((resp) => {
+      
+      this.storage.set('entryquestions', resp);
+      this.navCtrl.push(EntryPage,resp);
+        
+      //sign up successfully redirect to entry questions
+      let toast = this.toastCtrl.create({
+        message: this.signupSuccessString,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+
+    }, (err) => {
+
+      // Unable to sign up
+      let toast = this.toastCtrl.create({
+        message: this.signupErrorString,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    });
+
   }
 
-  
 }

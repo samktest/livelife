@@ -79,4 +79,9 @@ export class EntryquestionsPage {
     this.menu.enable(true);
   }
 
+  status: boolean = false;
+  clickEvent(){
+      this.status = !this.status;       
+  }    
+
 }

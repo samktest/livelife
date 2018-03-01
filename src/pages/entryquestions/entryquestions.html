@@ -1,4 +1,4 @@
-<ion-header no-shadow>
+<ion-header no-shadow hidden>
   <ion-navbar>
     <ion-buttons end *ngIf="showSkip">
       <button ion-button (click)="startApp()" color="primary">{{ 'BACK_BUTTON_TEXT' | translate}}</button>
@@ -6,18 +6,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content no-bounce>
-  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)" >
+<ion-content no-bounce class="back-theme">
+  <ion-slides class="entry-slides" pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)" >
     <ion-slide *ngFor="let question of questions">
-      <h4>{{question.name}}</h4>
-      <ion-list radio-group [(ngModel)]="question.option_id" *ngFor="let option of question.option_catalogues">
-      	<ion-item >
-	    	<ion-label>{{option.option_text}}</ion-label>
-	    	<ion-radio  value="{{option.id}}"></ion-radio>
+      <h4 padding-bottom margin-bottom class="color-white">{{question.name}}</h4>
+      <ion-list padding-bottom padding-left padding-right class="entry-radio" radio-group [(ngModel)]="question.option_id" *ngFor="let option of question.option_catalogues">
+      	<ion-item round>
+	    	<ion-label text-center>{{option.option_text}}</ion-label>
+	    	<ion-radio  value="{{option.id}}" (click)="clickEvent()"  
+    [ngClass]="status ? 'radio-active' : 'radio-not-active'"></ion-radio>
 	  	</ion-item>
       </ion-list>
-      <button ion-button color="primary" *ngIf="showSkip" outline (click)="slideNext(questions)">Next</button>
-      <button ion-button color="primary" *ngIf="!showSkip" outline (click)="Saveanswers(questions)">Submit</button>
+      <div padding-left padding-right>
+        <button ion-button color="transgrey" block round class="login-btn" *ngIf="showSkip" (click)="slideNext(questions)">Next</button>
+        <button ion-button color="transgrey" block round class="login-btn" *ngIf="!showSkip" (click)="Saveanswers(questions)">Submit</button>
+      </div>
     </ion-slide>    
   </ion-slides> 
 </ion-content>

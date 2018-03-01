@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header hidden>
 
   <ion-navbar>
     <ion-title>{{ 'FOROGOT_TITLE' | translate }}</ion-title>
@@ -7,17 +7,32 @@
 </ion-header>
 
 
-<ion-content>
-  <form (submit)="RequestForgot()">
+<ion-content class="back-theme">
+
+  <form (submit)="RequestForgot()"  style="width: 100%;">
+
+    <div padding text-center>
+      <h4 class="color-white"> Forgot your password? Happens to all of us. </h4>  
+      <h4 class="color-white"> Provide the email/username you signed up with. </h4>
+    </div>
     <ion-list>
 
-      <ion-item>
-        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>  
-        <ion-input clearInput type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      <ion-item padding-left padding-right padding-bottom>
+        <!-- <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>   -->
+        <ion-input placeholder="{{ 'EMAIL' | translate }}" clearInput type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
 
-      <div padding>
-        <button ion-button color="primary" block>{{ 'SEND_MAIL_BUTTON' | translate }}</button> 
+      <div padding-left padding-right padding-bottom>
+        <button ion-button color="transgrey" round block class="login-btn">
+          {{ 'SEND_MAIL_BUTTON' | translate }}
+        </button> 
+      </div>
+
+      <div padding text-center>
+        <p>
+          <ion-icon ios="ios-lock" md="md-lock"></ion-icon>
+          <span padding-left> Back to login </span>
+        </p>
       </div>
 
     </ion-list>

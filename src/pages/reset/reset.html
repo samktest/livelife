@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header hidden>
 
   <ion-navbar>
     <ion-title>{{ 'RESET' | translate }}</ion-title>
@@ -7,23 +7,23 @@
 </ion-header>
 
 
-<ion-content>
-  <form (submit)="RequestReset()">
+<ion-content class="back-theme">
+  <form (submit)="RequestReset()" style="width: 100%;">
     <ion-list>
-   	  <ion-item>
-        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>  
-        <ion-input clearInput type="text" [(ngModel)]="account.email" name="email"></ion-input>
+   	  <ion-item padding-left padding-right padding-bottom>
+        <!-- <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>   -->
+        <ion-input placeholder="{{ 'EMAIL' | translate }}" clearInput type="text" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item> 	
-      <ion-item>
-        <ion-label floating>{{ 'PASSWORD_TOKEN' | translate }}</ion-label>  
-        <ion-input clearInput type="text" [(ngModel)]="account.password_token" name="password_token"></ion-input>
+      <ion-item padding-left padding-right padding-bottom>
+        <!-- <ion-label floating>{{ 'PASSWORD_TOKEN' | translate }}</ion-label>   -->
+        <ion-input placeholder="{{ 'PASSWORD_TOKEN' | translate }}" clearInput type="text" [(ngModel)]="account.password_token" name="password_token"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>  
-        <ion-input clearInput type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      <ion-item padding-left padding-right padding-bottom>
+        <!-- <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>   -->
+        <ion-input placeholder="{{ 'PASSWORD' | translate }}" clearInput type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
       <div padding>
-        <button ion-button color="primary" block>{{ 'RESET_PASSWORD_BUTTON' | translate }}</button>        
+        <button ion-button round color="transgrey" block class="login-btn">{{ 'RESET_PASSWORD_BUTTON' | translate }}</button>        
       </div>
 
     </ion-list>

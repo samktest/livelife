@@ -55,4 +55,10 @@ export class InterestsPage {
     this.menu.close();
   }
 
+  status: boolean = false;
+  clickEvent(event){
+      console.log(event);
+      this.status = !this.status;       
+  } 
+
 }
