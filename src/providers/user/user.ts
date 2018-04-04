@@ -80,9 +80,8 @@ export class User {
    * which is voted by user on questions page
    */
   entryquestions(reqs) {
-    
-    let seq = this.api.get('/api/allquestions', {token:"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MCwiZXhwIjoxNTIwNTA4NjM2LCJpc3MiOiJpc3N1ZXJfbmFtZSIsImF1ZCI6ImNsaWVudCJ9.8BRezqB5mjcntiEG9jnb5bzhH4WQSj50jgJT35a2qI0"}, {headers:{'Authorization':"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MCwiZXhwIjoxNTIwNTA4NjM2LCJpc3MiOiJpc3N1ZXJfbmFtZSIsImF1ZCI6ImNsaWVudCJ9.8BRezqB5mjcntiEG9jnb5bzhH4WQSj50jgJT35a2qI0"}}).share();
 
+    let seq = this.api.get('/api/allquestions', {token:reqs.user.auth_token}, {headers:{'Authorization':reqs.user.auth_token}}).share();
     seq.subscribe((res: any) => {
       // If the API returned a successful response, get list of questions in variable
       if (res.length > 0 ) {

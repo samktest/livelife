@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ToastController,Loading, LoadingCo
 import { Storage } from '@ionic/storage';
 import { User } from '../../providers/providers';
 import { ResetPage } from '../pages';
+import { LoginPage } from '../pages';
 
 /**
  * Generated class for the ForgotPage page.
@@ -75,6 +76,10 @@ export class ForgotPage {
             toast.present();
         });
     });
+  }
+  //redirect to login page on back to login
+  backtologin() {
+    this.navCtrl.push('LoginPage');
   }
 
 }

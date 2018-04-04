@@ -1,9 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, MenuController, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
+import { IonicPage, MenuController, NavController, NavParams, Platform } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginPage } from '../pages';
-import { SignupPage } from '../pages';
 import { Storage } from '@ionic/storage';
 export interface Question {
   id:number,
@@ -30,7 +29,7 @@ export class EntryquestionsPage {
 
   @ViewChild(Slides) slides: Slides;
 
-  constructor(private storage: Storage, public navCtrl: NavController, private loadingCtrl: LoadingController, public navParams: NavParams, public menu: MenuController, translate: TranslateService, public platform: Platform) {
+  constructor(private storage: Storage, public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, translate: TranslateService, public platform: Platform) {
     
       if(this.navParams.data.length>0)
       {
@@ -60,6 +59,8 @@ export class EntryquestionsPage {
     this.answers = this.questions.map( ques => {
       return { question_id: ques.id, option_id: Number(ques.option_id) };
     });
+
+    console.log(this.answers);
   }
   
   //check view user valid or not

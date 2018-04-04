@@ -4,6 +4,7 @@ import { IonicPage, NavController, ToastController,Loading, LoadingController } 
 import { Storage } from '@ionic/storage';
 import { User } from '../../providers/providers';
 import { EntryPage } from '../pages';
+import { LoginPage } from '../pages';
 
 @IonicPage()
 @Component({
@@ -17,12 +18,12 @@ export class SignupPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: { name: string, email: string, password: string, password_confirmation: string, username: string, device_id: any } = {
-    name: 'appuser1',
-    email: 'appuser1@gmail.com',
-    password: 'appuser1',
-    password_confirmation: 'appuser1',
-    username: 'appuser1',
-    device_id: 'appuser1'
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    username: '',
+    device_id: ''
   };
 
   // Our translated text strings
@@ -100,5 +101,9 @@ export class SignupPage {
       toast.present();
     });
 
+  }
+  //redirect to login page on back to login
+  backtologin() {
+    this.navCtrl.push('LoginPage');
   }
 }
